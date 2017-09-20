@@ -1,9 +1,16 @@
+* {
+	outline: none;
+}
+*:focus {
+	outline:none;
+}
 body {background-color: #000;
 	height: 100%;
 	font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	text-transform: uppercase;
 	color: #fff;
-	overflow: hidden;
 }
 .content-container {
 	padding: 1% 0;
@@ -19,23 +26,59 @@ body {background-color: #000;
 }
 #answer {
 	position: absolute;
-    top: 205px;
-    left: 180px;
+    top: 140px;
+    left: 150px;
 }
 h1,
 h2 {
 	color: #eafef2;
 	font-family: 'Fondamento', cursive;
+	text-transform: initial;
 }
 h1 {
-	font-size: 8em;
+	font-size: 7em;
 	text-transform: uppercase;
+	animation-name: fontSwap;
+    animation-duration: 4s;
+}
+p {
+	color: #eafef2;
+}
+@-webkit-keyframes fontSwap {
+	0%   {color: #FFEFB9;}
+    25%  {color: #A9E7DA;}
+    50%  {color: #FFC2B9;}
+    50%  {color: #FFDEE0;}
+    100% {color: #C9CBE7;}
+    /*from {color: #eafef2;}
+    to {color: #E0DEFF;}*/
+}
+/* Standard syntax */
+@keyframes fontSwap {
+	0%   {color: #FFEFB9;}
+    25%  {color: #A9E7DA;}
+    50%  {color: #FFC2B9;}
+    50%  {color: #FFDEE0;}
+    100% {color: #C9CBE7;}
+
+    /*from {color: #eafef2;}
+    to {color: #E0DEFF;}*/
 }
 h2 {
 	font-size: 2em;
+	line-height: 1.4;
+}
+form{
+	margin: 1% 0;
 }
 input {
-	color: #000;
+	color: #E0DEFF;
+    border: 1px solid #E0DEFF;
+    background-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.5;
+    padding: 5px 15px;
 }
 .clearfix::after {
     content: " ";
@@ -45,6 +88,12 @@ input {
 .row {
 	margin: 0;
 }
-.hide {
+#input-container {
+	min-height: 66px;
+}
+.remove {
 	display: none;
-}	
+}
+.hide {
+	visibility:hidden
+}
