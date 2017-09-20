@@ -1,0 +1,50 @@
+body {background-color: #000;
+	height: 100%;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	color: #fff;
+	overflow: hidden;
+}
+.content-container {
+	padding: 1% 0;
+	text-align: center;
+}
+.answer-wrapper {
+	background: url(../images/crystal.png);
+	background-repeat:no-repeat;
+	width: 400px;
+	height:500px;
+	margin: 20px auto;
+	position: relative;
+}
+#answer {
+	position: absolute;
+    top: 205px;
+    left: 180px;
+}
+h1,
+h2 {
+	color: #eafef2;
+	font-family: 'Fondamento', cursive;
+}
+h1 {
+	font-size: 8em;
+	text-transform: uppercase;
+}
+h2 {
+	font-size: 2em;
+}
+input {
+	color: #000;
+}
+.clearfix::after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+.row {
+	margin: 0;
+}
+.hide {
+	display: none;
+}	

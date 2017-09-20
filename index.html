@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Amber Burroughs">
+	<title>Psychic Game</title>
+	<!-- <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
+	<link href="https://fonts.googleapis.com/css?family=Fondamento|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<div class="content-fluid content-container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 messages" id="message-section">
+				<!-- Game main messages here -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<form id="guess-form">
+					<input type="text" id="user-letter" maxlength="1" required="1 letter only" pattern="[a-zA-Z]"/>
+					<input type="submit" id="letter-sub-btn" value="predict" / > 
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-2">
+				<div class="winlose-wrapper score-wrap">
+					<div id="wins-losses">
+						<!-- total wins and losses here -->
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-8">
+				<div class="answer-wrapper">
+					<div id="answer">
+					<!-- computer letter added here -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="sub-messages">
+							<!-- new game button, guess again, guess a different letter alert here -->							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-2">
+				<div class="currentgame-wrapper score-wrap">
+					<div id="current-game">
+						<!-- guesses left and letters guessed here -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+</html>
