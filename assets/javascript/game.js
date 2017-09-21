@@ -18,18 +18,20 @@ var losses = 0;
 var totalGuesses = 5; // guesses left
 var lettersGuessed = []; 
 const choices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; // constent
-var computerGuess = "a"; // for test
-// choices[Math.floor(Math.random() * choices.length)]
+var computerGuess = choices[Math.floor(Math.random() * choices.length)]; 
+// 
 
 // messages
 var newGameText =
         "<h2>Look deep into my crystal ball and predict the letter within...</h2>";
 var firstGuessWinText = 
 		  "<h2>Your psychic abilities are insane! You knew the exact letter.</h2>";
-var multiGuessWinText = 
-		  "<h2>It only took you " + totalGuesses + " times to predict the letter.</h2>"; // this needs to be updated after each win with multi guesses
+var multiGuessWinText; // this needs to be updated after each win with multi guesses
+
 var guessAgainText = 
 		  "<h4>Try another letter.</h4>";
+var losingText = 
+		  "<h2>You couldn't predict the letter. Try to really focus next time!</h2>"
 // var differentLetter = 
 // 		  "<h3>try another letter</h3>"; 
 
@@ -57,11 +59,12 @@ var upodateWinnerStats = function (str) {
     document.querySelector("#start-new-game").classList.remove("remove");
 	wins++;
 	gameData();
-}  // combined these some how? 
-var upodateLossesStats = function () {
-	// losing message
+}  // combined these
+var upodateLossesStats = function (str) {
+	document.querySelector("#message-section").innerHTML = str;
 	document.querySelector("#answer").innerHTML = "<h1>" + computerGuess +"</h1>";
 	document.getElementById("letter-sub-btn").setAttribute("disabled", true);
+	document.querySelector("#guess-form").classList.add("hide");
     document.querySelector("#start-new-game").classList.remove("remove");
 	losses++
     gameData();
@@ -78,7 +81,9 @@ document.getElementById("letter-sub-btn").addEventListener("click", function(e){
 		e.preventDefault() 
 	}
     if (totalGuesses <= 1 ) { 
-    	upodateLossesStats();
+    	gameData();
+    	upodateLossesStats(losingText);
+
     }
 
 	var userInput = document.getElementById("user-letter").value.toLowerCase();
@@ -129,6 +134,8 @@ var psychic = function(userInput){
 			upodateWinnerStats(firstGuessWinText);
 			
 		} else {
+			multiGuessWinText = 
+				"<h2>It only took you " + lettersGuessed.length + " times to predict the letter.</h2>";
 			upodateWinnerStats(multiGuessWinText);
 			
 		}
@@ -142,6 +149,7 @@ var reset = function () {
 	 document.querySelector("#guess-form").classList.remove("hide");
 	 totalGuesses = 5; // guesses left
 	 lettersGuessed = []; 
+	 currentGameData();
 	 computerGuess = choices[Math.floor(Math.random() * choices.length)];
 	 document.querySelector(".sub-messages").classList.add("hide");
 	 document.querySelector("#start-new-game").classList.add("remove");

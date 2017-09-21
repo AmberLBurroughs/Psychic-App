@@ -117,13 +117,20 @@ input, button {
 .fan-card, .card-fan {
 	width: 200px;
 	height: 322px;
-	border: 1px solid #ffe;
+	border: 1px solid #E0DEFF;
 	box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
 	position: absolute;
+	background: url(../images/card-1.jpg) no-repeat;
+	background-size: 100%;
 }
 .fan-card:last-child , 
 .card-fan:last-child {
 	background: url(../images/top-card.jpg) no-repeat;
+	background-size: 100%;
+}
+.fan-card:first-child , 
+.card-fan:first-child {
+	background: url(../images/card-2.jpg) no-repeat;
 	background-size: 100%;
 }
 .winlose-wrapper:hover .fan-card:first-child, .currentgame-wrapper:hover .card-fan:last-child {
@@ -145,3 +152,29 @@ input, button {
 }
 
 /*transform: rotate(-12deg);*/
+
+@media only screen and (max-width: 991.98px) { 
+	.wraps {
+		display: flex;
+		flex-direction: column;
+	}
+	.o1 {
+		order: -1;
+		float:left;
+	}
+	.o2 {
+		order: 2;
+	}
+	.winlose-wrapper, .currentgame-wrapper {
+	    width: 150px;
+	    height: 240px;
+	    margin: 0 auto;
+	}
+	.fan-card, .card-fan {
+	    width: 150px;
+	    height: 240px
+	}
+	.winlose-wrapper p, .currentgame-wrapper p {
+		margin-top: 40px;
+	}
+}
