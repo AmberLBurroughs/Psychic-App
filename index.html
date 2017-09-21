@@ -26,6 +26,15 @@
 							<input type="text" id="user-letter" maxlength="1" required="1 letter only" pattern="[a-zA-Z]" placeholder="input 1 letter a-z" />
 							<input type="submit" id="letter-sub-btn" value="predict" / > 
 						</form>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="sub-messages-wrap">
+									<div class="sub-messages"></div>
+									<!-- new game button, guess again, guess a different letter alert here -->	
+									<button id="start-new-game" class="remove">play again?</button>						
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -33,20 +42,15 @@
 		<div class="row">
 			<div class="col-xs-6 col-sm-6 col-md-3">
 				<div class="winlose-wrapper score-wrap">
-					<div id="wins-losses">
+					<div class="fan-card" style="background-color: #E0DEFF"></div>
+					<div class="fan-card" style="background-color: #E0DEFF"></div>
+					<div class="fan-card" id="wins-losses" style="background-color: #E0DEFF">
 						<p>Wins: <span id="wins"> </span></p>
 						<p>losses: <span id="losses"> </span></p>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12">
-						<div class="sub-messages">
-							<!-- new game button, guess again, guess a different letter alert here -->							
-						</div>
-					</div>
-				</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 ">
 				<div class="answer-wrapper">
 					<div id="answer">
 					<!-- computer letter added here -->
@@ -55,8 +59,10 @@
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-3">
 				<div class="currentgame-wrapper score-wrap">
-					<div id="current-game">
-						<p>REMAINING turns: <span id="remaining-guesses"></span></p>
+				    <div class="card-fan" style="background-color: #E0DEFF"></div>
+					<div class="card-fan" style="background-color: #E0DEFF"></div>
+					<div class="card-fan" id="current-game" style="background-color: #E0DEFF">
+						<p>REMAINING trys: <span id="remaining-guesses"></span></p>
 						<p>INCORRECT LETTERS: <span id="incorrect-guesses"></span></p>
 					</div>
 				</div>
@@ -64,5 +70,6 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
+	<!-- <script type="text/javascript" src="assets/javascript/test.js"></script> -->
 </body>
 </html>

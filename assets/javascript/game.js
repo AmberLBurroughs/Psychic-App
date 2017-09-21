@@ -20,27 +20,18 @@ var lettersGuessed = [];
 const choices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; // constent
 var computerGuess = "a"; // for test
 // choices[Math.floor(Math.random() * choices.length)]
+
 // messages
 var newGameText =
         "<h2>Look deep into my crystal ball and predict the letter within...</h2>";
 var firstGuessWinText = 
 		  "<h2>Your psychic abilities are insane! You knew the exact letter.</h2>";
 var multiGuessWinText = 
-		  "<h2>It only took you " + totalGuesses + " times to predict the letter.</h2>";
+		  "<h2>It only took you " + totalGuesses + " times to predict the letter.</h2>"; // this needs to be updated after each win with multi guesses
 var guessAgainText = 
-		  "<h3>Try another letter.</h3>";
+		  "<h4>Try another letter.</h4>";
 // var differentLetter = 
-// 		  "<h3></h3>";
-// var playAgainText =
-// 		  "<h3></h3>";
-		
-
-var reset = function () {
-	document.querySelector("#message-section").innerHTML = newGameText;
-	var totalGuesses = 5; // guesses left
-	var lettersGuessed = []; 
-	var computerGuess = choices[Math.floor(Math.random() * choices.length)];
- };
+// 		  "<h3>try another letter</h3>"; 
 
 var load = function () {
     // show new game message
@@ -57,8 +48,27 @@ var gameData = function () {
 var currentGameData = function () {
 	document.querySelector("#remaining-guesses").innerHTML = totalGuesses;	
 	document.querySelector("#incorrect-guesses").innerHTML = lettersGuessed;	
-}; // dont sure where to call this
+}; 
 
+var upodateWinnerStats = function (str) {
+	document.querySelector("#message-section").innerHTML = str;
+	document.querySelector("#answer").innerHTML = "<h1>" + computerGuess +"</h1>";
+	document.querySelector("#guess-form").classList.add("hide");
+    document.querySelector("#start-new-game").classList.remove("remove");
+	wins++;
+	gameData();
+}  // combined these some how? 
+var upodateLossesStats = function () {
+	// losing message
+	document.querySelector("#answer").innerHTML = "<h1>" + computerGuess +"</h1>";
+	document.getElementById("letter-sub-btn").setAttribute("disabled", true);
+    document.querySelector("#start-new-game").classList.remove("remove");
+	losses++
+    gameData();
+}
+document.getElementById("start-new-game").addEventListener("click", function(){
+	reset();
+});
 
 document.getElementById("letter-sub-btn").addEventListener("click", function(e){
 	var inpObj = document.getElementById("guess-form");
@@ -67,9 +77,10 @@ document.getElementById("letter-sub-btn").addEventListener("click", function(e){
 	} else {
 		e.preventDefault() 
 	}
-    if (totalGuesses <= 1) {
-    	document.getElementById("letter-sub-btn").setAttribute("disabled", true);
+    if (totalGuesses <= 1 ) { 
+    	upodateLossesStats();
     }
+
 	var userInput = document.getElementById("user-letter").value.toLowerCase();
     psychic(userInput);
     currentGameData();
@@ -79,9 +90,9 @@ document.getElementById("letter-sub-btn").addEventListener("click", function(e){
 
 // ? 
 document.getElementById("user-letter").addEventListener("click", function(){
-	if (totalGuesses > 5 && totalGuesses < 0){
-		document.querySelector(".sub-messages").classList.add("hide");
-	}
+	// if (totalGuesses < 5 && totalGuesses < 0){
+	 	document.querySelector(".sub-messages").classList.add("hide"); // this is not working
+	// }
 });
 
 var psychic = function(userInput){
@@ -97,36 +108,46 @@ var psychic = function(userInput){
 			return
 		} else {
 			lettersGuessed.push(userGuess);
-			if (totalGuesses > 0) {
+			if (totalGuesses > 1) {
 				totalGuesses--;
 				console.log(totalGuesses);
 				currentGameData();
-				document.querySelector(".sub-messages").innerHTML = guessAgainText;
+				document.querySelector(".sub-messages").innerHTML = guessAgainText; // broken on reset
+				document.querySelector(".sub-messages").classList.remove("hide");
 			} else {
 				// stop all
 				// play again button - reset all 
-				losses++;
+				totalGuesses--;
+				document.querySelector(".sub-messages").classList.add("hide");
+				currentGameData();
 				gameData();
 			}
 		}
 	} else {
 		// check how many time took to get the right answer
 		if (totalGuesses === 5) {
-			document.querySelector("#message-section").innerHTML = firstGuessWinText;
-			document.querySelector("#answer").innerHTML = "<h1>" + computerGuess +"</h1>";
-			document.querySelector("#guess-form").classList.add("hide");
-			wins++;
-			gameData();
+			upodateWinnerStats(firstGuessWinText);
+			
 		} else {
-			document.querySelector("#message-section").innerHTML = multiGuessWinText;
-			document.querySelector("#answer").innerHTML = "<h1>" + computerGuess +"</h1>";
-			document.querySelector("#guess-form").classList.add("hide");
-			wins++;
-			gameData();
+			upodateWinnerStats(multiGuessWinText);
+			
 		}
 	}
 	currentGameData();
 };
+
+var reset = function () {
+	document.querySelector("#message-section").innerHTML = newGameText;
+	 document.querySelector("#answer").innerHTML = "<h1> </h1>";
+	 document.querySelector("#guess-form").classList.remove("hide");
+	 totalGuesses = 5; // guesses left
+	 lettersGuessed = []; 
+	 computerGuess = choices[Math.floor(Math.random() * choices.length)];
+	 document.querySelector(".sub-messages").classList.add("hide");
+	 document.querySelector("#start-new-game").classList.add("remove");
+	 document.getElementById("letter-sub-btn").removeAttribute("disabled");
+
+ };
 
 
 load();
