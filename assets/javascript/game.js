@@ -73,25 +73,6 @@ document.getElementById("start-new-game").addEventListener("click", function(){
 	reset();
 });
 
-document.getElementById("letter-sub-btn").addEventListener("click", function(e){
-	var inpObj = document.getElementById("guess-form");
-	if (inpObj.checkValidity() == false) {
-		return
-	} else {
-		e.preventDefault() 
-	}
-    if (totalGuesses <= 1 ) { 
-    	gameData();
-    	upodateLossesStats(losingText);
-
-    }
-
-	var userInput = document.getElementById("user-letter").value.toLowerCase();
-    psychic(userInput);
-    currentGameData();
-    document.getElementById("user-letter").value = ""; // reset input value
-    return false; // prevent page refresh
-});
 
 // ? 
 document.getElementById("user-letter").addEventListener("click", function(){
@@ -142,6 +123,25 @@ var psychic = function(userInput){
 	}
 	currentGameData();
 };
+document.getElementById("letter-sub-btn").addEventListener("click", function(e){
+	var inpObj = document.getElementById("guess-form");
+	if (inpObj.checkValidity() == false) {
+		return
+	} else {
+		e.preventDefault() 
+	}
+    if (totalGuesses === 0 ) { 
+    	gameData();
+    	upodateLossesStats(losingText);
+
+    }
+
+	var userInput = document.getElementById("user-letter").value.toLowerCase();
+    psychic(userInput);
+    currentGameData();
+    document.getElementById("user-letter").value = ""; // reset input value
+    return false; // prevent page refresh
+});
 
 var reset = function () {
 	document.querySelector("#message-section").innerHTML = newGameText;
