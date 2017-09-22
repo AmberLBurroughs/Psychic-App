@@ -164,6 +164,7 @@ input, button {
 	}
 	.o2 {
 		order: 2;
+		padding: 0;
 	}
 	.winlose-wrapper, .currentgame-wrapper {
 	    width: 150px;
