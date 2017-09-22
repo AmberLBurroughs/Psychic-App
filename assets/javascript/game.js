@@ -137,7 +137,7 @@ var psychic = function(userInput){
 			
 		} else {
 			multiGuessWinText = 
-				"<h2>It only took you " + lettersGuessed.length + " times to predict the letter.</h2>";
+				"<h2>It only took you " + (lettersGuessed.length + 1) + " times to predict the letter.</h2>";
 			upodateWinnerStats(multiGuessWinText);
 			
 		}
