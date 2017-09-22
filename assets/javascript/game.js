@@ -89,7 +89,6 @@ document.getElementById("letter-sub-btn").addEventListener("click", function(e){
     if (totalGuesses === 0 ) { 
     	gameData();
     	upodateLossesStats(losingText);
-
     }
 
     return false; // prevent page refresh
@@ -139,7 +138,6 @@ var psychic = function(userInput){
 			multiGuessWinText = 
 				"<h2>It only took you " + (lettersGuessed.length + 1) + " times to predict the letter.</h2>";
 			upodateWinnerStats(multiGuessWinText);
-			
 		}
 	}
 	currentGameData();
