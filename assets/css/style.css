@@ -139,6 +139,12 @@ input, button {
 .currentgame-wrapper:hover .card-fan:first-child, .winlose-wrapper:hover .fan-card:last-child {
 	transform: rotate(12deg);
 }
+.winlose-wrapper .fan-card:first-child, .currentgame-wrapper .card-fan:last-child {
+		transform: rotate(0deg);
+}
+.currentgame-wrapper .card-fan:first-child, .winlose-wrapper .fan-card:last-child {
+	transform: rotate(0deg);
+}
 .winlose-wrapper p, .currentgame-wrapper p {
 	margin-top: 60px;
 	font-family: 'Fondamento', cursive;
@@ -150,7 +156,12 @@ input, button {
 	text-transform: lowercase;
 	display: block;
 }
-
+.wraps {
+		display: inline-block;
+	}
+.o1 {
+	margin-bottom: 0; 
+}
 /*transform: rotate(-12deg);*/
 
 @media only screen and (max-width: 991.98px) { 
@@ -160,11 +171,15 @@ input, button {
 	}
 	.o1 {
 		order: -1;
-		float:left;
+		margin-bottom: 60px;
 	}
 	.o2 {
 		order: 2;
 		padding: 0;
+	}
+	.o3 {
+		order: 3;
+		margin-bottom: 60px;
 	}
 	.winlose-wrapper, .currentgame-wrapper {
 	    width: 150px;
@@ -177,5 +192,11 @@ input, button {
 	}
 	.winlose-wrapper p, .currentgame-wrapper p {
 		margin-top: 40px;
+	}
+	.winlose-wrapper .fan-card:first-child, .currentgame-wrapper .card-fan:last-child {
+		transform: rotate(-12deg);
+	}
+	.currentgame-wrapper .card-fan:first-child, .winlose-wrapper .fan-card:last-child {
+		transform: rotate(12deg);
 	}
 }
