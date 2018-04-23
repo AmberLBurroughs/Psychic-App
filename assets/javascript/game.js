@@ -75,7 +75,7 @@ document.getElementById("start-new-game").addEventListener("click", function(){
 
 document.getElementById("letter-sub-btn").addEventListener("click", function(e){
 	var inpObj = document.getElementById("guess-form");
-	if (inpObj.checkValidity() == false) {
+	if (inpObj.checkValidity() === false) {
 		return
 	} else {
 		e.preventDefault() 
